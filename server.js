@@ -1,8 +1,11 @@
 require('dotenv').config(); // Carrega as variáveis do arquivo .env para o process.env
 const express = require('express');
+const cpfController = require('./cpfController.controller');
 const app = express();
-
 app.use(express.json());
+
+
+
 // rota ou endpoint
                  // request, response   
 app.get('/ping', (req, res) => {
@@ -31,6 +34,9 @@ app.post('/usuario', (req, res) =>{
    })
 })
 
+// rota Post chamando diretamento a funçãoo do Controller recebeCpf
+app.post('/cpfl', cpfController.recebeCpf);
+
 
 
 
@@ -43,3 +49,4 @@ app.listen(PORT, () => {
 //  console.log('Servidor rodando... em http://localhost:3500')
     console.log(`Servidor rodando... em http://localhost:${PORT}`)
 })
+
